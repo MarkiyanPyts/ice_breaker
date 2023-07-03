@@ -5,8 +5,8 @@ def scrape_linkedin_profile(linkedin_profile_url: str):
     """Scrape a LinkedIn profiles,
     Manually scrape the information from LinkedIn profile"""
     #api_endpoint = 'https://gist.githubusercontent.com/MarkiyanPyts/d856d6116cec2755f8ff9bf26552cd98/raw/886379f0192eea16985df54fa711e1b69b69a720/mark.json'
-
-    response = requests.get(linkedin_profile_url)
+    print(f"I got this linkedin profile url: {linkedin_profile_url}")
+    response = requests.get("https://gist.githubusercontent.com/MarkiyanPyts/d856d6116cec2755f8ff9bf26552cd98/raw/886379f0192eea16985df54fa711e1b69b69a720/mark.json")
 
     if response.status_code == 200:
         data = response.json()
