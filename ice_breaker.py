@@ -9,9 +9,9 @@ import os
 
 if __name__ == '__main__':
 
-    linkedin_profile_url = linkedin_lookup_agent(name="Pyts Maykiyan")
+    linkedin_profile_url = linkedin_lookup_agent(name="Pyts Markiyan")
     print(f"starting search for {linkedin_profile_url}")
-    
+
     summary_template = '''
         given the Linkedin information {information} about a person from I want you to create
         1. A Short Summary
