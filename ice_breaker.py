@@ -5,11 +5,11 @@ from langchain.chains import LLMChain
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 from third_parties.linkedin import scrape_linkedin_profile
 
-from output_parsers import person_intel_parser
+from output_parsers import person_intel_parser, PersonIntel
 
-import os
+from typing import Tuple
 
-def ice_break(name: str) -> str:
+def ice_break(name: str) -> Tuple[PersonIntel, str]:
     linkedin_profile_url = linkedin_lookup_agent(name=name)
     print(f"starting search for {linkedin_profile_url}")
 
@@ -38,9 +38,8 @@ def ice_break(name: str) -> str:
 
     result = chain.run(information=linkedin_data)
 
-    return person_intel_parser.parse(result)
+    return person_intel_parser.parse(result), linkedin_data.get("profile_pic_url")
 
 if __name__ == '__main__':
-    ice_break = ice_break(name="Pyts Markiyan")
-
-    print(ice_break)
+    result = ice_break(name="Pyts Markiyan")
+    print(result)
